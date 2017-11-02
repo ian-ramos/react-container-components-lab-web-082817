@@ -13,8 +13,11 @@ describe('<MovieReviews />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = !MovieReviews.prototype ?
-      shallow(<Noop />) : shallow(<MovieReviews reviews={testReviews} />);
+    if (!MovieReviews.prototype) {
+      wrapper = shallow(<Noop />)
+    } else {
+      wrapper = shallow(<MovieReviews reviews={testReviews} />)
+    }
   });
 
   it('should be a stateless functional component', () => {
